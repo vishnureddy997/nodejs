@@ -15,8 +15,8 @@ pipeline {
 
         stage('Build docker image') {
             steps {
-                sh 'echo $TAG'
-                sh 'echo $BRANCH'
+//                 sh 'echo $TAG'
+//                 sh 'echo $BRANCH'
                 sh 'docker build -t kandula17/nodeapp:$BUILD_NUMBER .'
             }
         }
