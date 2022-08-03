@@ -2,7 +2,7 @@ pipeline {
     agent any 
     environment {
     DOCKERHUB_CREDENTIALS = credentials('kandula-dockerhub')
-    BRANCH = "${env.GIT_BRANCH}"
+    BRANCH = "${env.GIT_BRANCH:6:}"
     }
     stages { 
         stage('SCM Checkout') {
