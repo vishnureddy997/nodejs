@@ -4,7 +4,7 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('kandula-dockerhub')
     BRANCH="${env.GIT_BRANCH}"
     LENGTH="${#BRANCH}"
-    TAG="${BRANCH:6:$LENGTH}"    
+    TAG="${BRANCH:7:$LENGTH}"    
     }
     stages { 
         stage('SCM Checkout') {
@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t kandula17/nodeapp:$BRANCH .'
+                sh 'docker build -t kandula17/nodeapp:$TAG .'
             }
         }
         stage('login to dockerhub') {
@@ -25,7 +25,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push kandula17/nodeapp:$BRANCH'
+                sh 'docker push kandula17/nodeapp:$TAG'
             }
         }
 }
